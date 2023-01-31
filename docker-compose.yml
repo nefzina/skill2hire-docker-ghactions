@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+
+  db-staging:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=pgstaging
+      - POSTGRES_PASSWORD=pgstaging
+      - POSTGRES_DB=pgstaging
+    ports:
+      - '15432:5432'
+    volumes:
+      - db-staging:/var/lib/postgresql/data
+    networks:
+      - demo
+
+  db-prod:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=pgprod
+      - POSTGRES_PASSWORD=pgprod
+      - POSTGRES_DB=pgprod
+    ports:
+      - '25432:5432'
+    volumes:
+      - db-prod:/var/lib/postgresql/data
+    networks:
+      - demo
+
+  docker-demo-staging:
+    image: docker-demo:latest
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-staging:5432/pgstaging
+      - SPRING_DATASOURCE_USERNAME=pgstaging
+      - SPRING_DATASOURCE_PASSWORD=pgstaging
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db-staging
+    networks:
+      - demo
+
+  docker-demo-prod:
+    image: docker-demo:latest
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-prod:5432/pgprod
+      - SPRING_DATASOURCE_USERNAME=pgprod
+      - SPRING_DATASOURCE_PASSWORD=pgprod
+    ports:
+      - '9080:8080'
+    depends_on:
+      - db-prod
+    networks:
+      - demo
+
+volumes:
+  db-staging:
+    driver: local
+  db-prod:
+    driver: local
+
+networks:
+  demo:
