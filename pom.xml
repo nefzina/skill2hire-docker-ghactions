@@ -58,6 +58,9 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<imageName>ice0nine/${image.name}:${image.tag}</imageName>
+				        <image>
+				            <builder>dashaun/builder:tiny</builder>
+				        </image>
 				</configuration>
 			</plugin>
 		</plugins>
