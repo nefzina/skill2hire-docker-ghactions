@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>tech.wcs</groupId>
 	<artifactId>docker-demo</artifactId>
@@ -58,13 +59,13 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<imageName>lgrignon/${image.name}:${image.tag}</imageName>
-				        <image>
-				            <builder>dashaun/builder:tiny</builder>
+					<image>
+						<builder>dashaun/builder:tiny</builder>
 						<env>
-					            <BP_JVM_VERSION>${java.version}</BP_JVM_VERSION>
-					            <BP_JVM_TYPE>JDK</BP_JVM_TYPE>
-					        </env>
-				        </image>
+							<BP_JVM_VERSION>${java.version}</BP_JVM_VERSION>
+							<BP_JVM_TYPE>JDK</BP_JVM_TYPE>
+						</env>
+					</image>
 				</configuration>
 			</plugin>
 		</plugins>
