@@ -11,8 +11,8 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          java-version: "17"
+          distribution: "temurin"
       - name: Build with Maven
         run: ./mvnw --batch-mode --update-snapshots spring-boot:build-image -Dimage.tag=${GITHUB_REF##*/}
       - name: Login to DockerHub
@@ -22,4 +22,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Push
         run: |
-          docker push ice0nine/docker-demo:${GITHUB_REF##*/}
+          docker push elea641/quest-ci:tagname
