@@ -58,7 +58,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<imageName>ice0nine/${image.name}:${image.tag}</imageName>
+					<imageName>elea641/${image.name}:${image.tag}</imageName>
 					<image>
 						<builder>dashaun/builder:tiny</builder>
 						<env>

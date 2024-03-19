@@ -30,7 +30,7 @@ services:
       - demo
 
   docker-demo-staging:
-    image: ice0nine/docker-demo:staging
+    image: elea641/docker-demo:staging
     restart: always
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db-staging:5432/pgstaging
@@ -44,7 +44,7 @@ services:
       - demo
 
   docker-demo-prod:
-    image: ice0nine/docker-demo:main
+    image: elea641/docker-demo:main
     restart: always
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db-prod:5432/pgprod

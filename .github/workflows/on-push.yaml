@@ -22,4 +22,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Push
         run: |
-          docker push elea641/quest-ci:tagname
+          docker push elea641/docker-demo:${GITHUB_REF##*/}
